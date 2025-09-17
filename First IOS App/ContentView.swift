@@ -34,6 +34,8 @@ struct ContentView: View {
                 }
                 .padding(.bottom, 40)
                 
+                Text("hola")
+                
                 
                 
                 
