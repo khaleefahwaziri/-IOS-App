@@ -13,7 +13,7 @@ struct ContentView: View {
     
     var body: some View {
         ZStack{
-            BackgroundView(topColor: .blue, bottomColor: .lightBlue)
+            BackgroundView(topColor: .blue, bottomColor: .brown)
             
             VStack{
                 CityNameView(cityName: "Coventry, UK")
