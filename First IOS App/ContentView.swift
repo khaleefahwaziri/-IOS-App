@@ -9,32 +9,41 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State private var isNigth = false
+    @State private var isNightModeOn = false
     
     var body: some View {
         ZStack{
-            BackgroundView(topColor: .blue, bottomColor: .brown)
+            BackgroundView(topColor: isNightModeOn ? .black : .blue, bottomColor: isNightModeOn ? .gray : .lightBlue)
             
             VStack{
                 CityNameView(cityName: "Coventry, UK")
                 
                 
-                MainWeatherView(imageName: "cloud.sun.fill", temperature: 24)
+                MainWeatherView(imageName: isNightModeOn ? "moon.stars.fill" : "cloud.sun.fill", temperature: 24)
                 
                 
                 
                 
                 HStack{
-                    WeatherDayView(daysOfWeek: "TUE", imageName: "cloud.sun.fill", temperature: 25)
-                    WeatherDayView(daysOfWeek: "WED", imageName: "cloud.rain.fill", temperature: 5)
-                    WeatherDayView(daysOfWeek: "THU", imageName: "cloud.sleet", temperature: 12)
-                    WeatherDayView(daysOfWeek: "FRI", imageName: "snowflake", temperature: 3)
-                    WeatherDayView(daysOfWeek: "SAT", imageName: "cloud.sun.bolt.circle.fill", temperature: 18)
+                    WeatherDayView(daysOfWeek: "TUE", imageName: isNightModeOn ? "moon.stars.fill" : "cloud.sun.fill", temperature: 25)
+                    WeatherDayView(daysOfWeek: "WED", imageName: isNightModeOn ? "sun.snow.circle.fill" : "cloud.rain.fill", temperature: 5)
+                    WeatherDayView(daysOfWeek: "THU", imageName: isNightModeOn ? "cloud.bolt.fill" : "cloud.sleet", temperature: 12)
+                    WeatherDayView(daysOfWeek: "FRI", imageName: isNightModeOn ? "cloud.moon.bolt.circle.fill" : "snowflake", temperature: 3)
+                    WeatherDayView(daysOfWeek: "SAT", imageName: isNightModeOn ? "tornado" : "cloud.sun.bolt.circle.fill", temperature: 18)
                 }
                 
                 Spacer()
                 
-                ButtonView(buttonText: "Change Day Time", buttonPressed: "Button was pressed")
+                Button {
+                    isNightModeOn.toggle()
+                }label: {
+                    Text("Change day mode")
+                        .font(.system(size: 20, weight: .medium, design: .default))
+                        .frame(width: 280, height: 50)
+                        .background(Color.white)
+                        .cornerRadius(8)
+                        
+                }
                 
                 Spacer()
                 
