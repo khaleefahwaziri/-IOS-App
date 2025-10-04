@@ -18,10 +18,6 @@ struct ContentView: View {
             VStack{
                 CityNameView(cityName: "Coventry, UK")
                 
-                Text("(this is a test)")
-                    .foregroundColor(.white)
-                    .italic(true)
-                    .font(.system(size: 20 , weight: .light))
                 
                 MainWeatherView(imageName: isNightModeOn ? "moon.stars.fill" : "cloud.sun.fill", temperature: 25)
                 
