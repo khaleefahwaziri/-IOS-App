@@ -25,10 +25,10 @@ struct ContentView: View {
                 
                 
                 HStack{
-                    WeatherDayView(daysOfWeek: "TUE", imageName: isNightModeOn ? "moon.stars.fill" : "cloud.sun.fill", temperature: 25)
+                    WeatherDayView(daysOfWeek: "TUE", imageName: isNightModeOn ? "moon.stars.fill" : "cloud.sun.fill", temperature: 24)
                     WeatherDayView(daysOfWeek: "WED", imageName: isNightModeOn ? "sun.snow.circle.fill" : "cloud.rain.fill", temperature: 4)
-                    WeatherDayView(daysOfWeek: "THU", imageName: isNightModeOn ? "cloud.bolt.fill" : "cloud.sleet", temperature: 12)
-                    WeatherDayView(daysOfWeek: "FRI", imageName: isNightModeOn ? "cloud.moon.bolt.circle.fill" : "snowflake", temperature: 3)
+                    WeatherDayView(daysOfWeek: "THU", imageName: isNightModeOn ? "cloud.bolt.fill" : "cloud.sleet", temperature: 13)
+                    WeatherDayView(daysOfWeek: "FRI", imageName: isNightModeOn ? "cloud.moon.bolt.circle.fill" : "snowflake", temperature: 2)
                     WeatherDayView(daysOfWeek: "SAT", imageName: isNightModeOn ? "tornado" : "cloud.sun.bolt.circle.fill", temperature: 18)
                 }
                 
@@ -38,7 +38,7 @@ struct ContentView: View {
                     isNightModeOn.toggle()
                 }label: {
                     Text("Change day mode")
-                        .font(.system(size: 19, weight: .medium, design: .default))
+                        .font(.system(size: 20, weight: .medium, design: .default))
                         .frame(width: 280, height: 50)
                         .background(Color.white)
                         .cornerRadius(8)
