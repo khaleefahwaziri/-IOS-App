@@ -30,6 +30,11 @@ struct ContentView: View {
                     WeatherDayView(daysOfWeek: "THU", imageName: isNightModeOn ? "cloud.bolt.fill" : "cloud.sleet", temperature: 13)
                     WeatherDayView(daysOfWeek: "FRI", imageName: isNightModeOn ? "cloud.moon.bolt.circle.fill" : "snowflake", temperature: 2)
                     WeatherDayView(daysOfWeek: "SAT", imageName: isNightModeOn ? "tornado" : "cloud.sun.bolt.circle.fill", temperature: 18)
+                    
+                    
+                    WeatherDayView(daysOfWeek: "SAT", imageName: isNightModeOn ? "tornado" : "cloud.sun.bolt.circle.fill", temperature: 18)
+                    WeatherDayView(daysOfWeek: "SAT", imageName: isNightModeOn ? "tornado" : "cloud.sun.bolt.circle.fill", temperature: 18)
+                    
                 }
                 
                 Spacer()
