@@ -32,8 +32,6 @@ struct ContentView: View {
                     WeatherDayView(daysOfWeek: "SAT", imageName: isNightModeOn ? "tornado" : "cloud.sun.bolt.circle.fill", temperature: 18)
                     
                     
-                    WeatherDayView(daysOfWeek: "SAT", imageName: isNightModeOn ? "tornado" : "cloud.sun.bolt.circle.fill", temperature: 18)
-                    WeatherDayView(daysOfWeek: "SAT", imageName: isNightModeOn ? "tornado" : "cloud.sun.bolt.circle.fill", temperature: 18)
                     
                 }
                 
