@@ -90,8 +90,9 @@ struct WeatherDayView: View {
                 .foregroundColor(.white)
             
             Image(systemName: imageName)
-                .renderingMode(.original)
+                .symbolRenderingMode(.multicolor)
                 .resizable()
+//                .foregroundStyle(.black, .white, .orange)
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 40, height: 40)
             
@@ -111,8 +112,9 @@ struct BackgroundView: View {
     @Binding var isNightModeOn: Bool
     
     var body: some View {
-        LinearGradient(gradient: Gradient(colors: [isNightModeOn ? .black : .blue, isNightModeOn ? .gray : .lightBlue ]), startPoint: .topLeading, endPoint: .bottomTrailing)
-            .edgesIgnoringSafeArea(.all)
+//        LinearGradient(gradient: Gradient(colors: [isNightModeOn ? .black : .blue, isNightModeOn ? .gray : .lightBlue ]), startPoint: .topLeading, endPoint: .bottomTrailing)
+//            .ignoresSafeArea(.all)
+        
     }
 }
 
