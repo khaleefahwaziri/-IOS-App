@@ -50,6 +50,8 @@ struct ContentView: View {
                 
                 Spacer()
                 
+                // ✅ Added small temperature converter feature below your original content
+                TemperatureConverterView()
             }
         }
     }
@@ -112,9 +114,8 @@ struct BackgroundView: View {
     @Binding var isNightModeOn: Bool
     
     var body: some View {
-//        LinearGradient(gradient: Gradient(colors: [isNightModeOn ? .black : .blue, isNightModeOn ? .gray : .lightBlue ]), startPoint: .topLeading, endPoint: .bottomTrailing)
-//            .ignoresSafeArea(.all)
-        
+        LinearGradient(gradient: Gradient(colors: [isNightModeOn ? .black : .blue, isNightModeOn ? .gray : .lightBlue ]), startPoint: .topLeading, endPoint: .bottomTrailing)
+            .ignoresSafeArea(.all)
     }
 }
 
@@ -141,3 +142,55 @@ struct MainWeatherView: View {
     }
 }
 
+
+// ✅ Added new mini feature here — simple temperature converter view
+struct TemperatureConverterView: View {
+    @State private var inputTemp = ""
+    @State private var convertedTemp = ""
+    @State private var isCelsiusToFahrenheit = true
+    
+    var body: some View {
+        VStack(spacing: 10) {
+            Text("🌡️ Temperature Converter")
+                .font(.system(size: 20, weight: .bold))
+                .foregroundColor(.white)
+                .padding(.top, 10)
+            
+            TextField("Enter temperature", text: $inputTemp)
+                .keyboardType(.decimalPad)
+                .padding()
+                .background(Color.white.opacity(0.2))
+                .cornerRadius(8)
+                .foregroundColor(.white)
+                .frame(width: 200)
+            
+            Picker("Conversion", selection: $isCelsiusToFahrenheit) {
+                Text("°C → °F").tag(true)
+                Text("°F → °C").tag(false)
+            }
+            .pickerStyle(SegmentedPickerStyle())
+            .frame(width: 200)
+            
+            Button("Convert") {
+                if let value = Double(inputTemp) {
+                    if isCelsiusToFahrenheit {
+                        convertedTemp = String(format: "%.1f°F", (value * 9/5) + 32)
+                    } else {
+                        convertedTemp = String(format: "%.1f°C", (value - 32) * 5/9)
+                    }
+                } else {
+                    convertedTemp = "Invalid input"
+                }
+            }
+            .padding(.top, 5)
+            .font(.system(size: 18, weight: .medium))
+            .foregroundColor(.white)
+            
+            Text(convertedTemp)
+                .foregroundColor(.white)
+                .font(.system(size: 20, weight: .bold))
+                .padding(.top, 5)
+        }
+        .padding(.bottom, 30)
+    }
+}
