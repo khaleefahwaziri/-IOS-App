@@ -139,4 +139,3 @@ struct MainWeatherView: View {
         .padding(.bottom, 40)
     }
 }
-
