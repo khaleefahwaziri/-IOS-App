@@ -107,7 +107,15 @@ struct WeatherDayView: View {
 }
 
 
-
+struct BackgroundView: View {
+    
+    @Binding var isNightModeOn: Bool
+    
+    var body: some View {
+        LinearGradient(gradient: Gradient(colors: [isNightModeOn ? .black : .blue, isNightModeOn ? .gray : .lightBlue ]), startPoint: .topLeading, endPoint: .bottomTrailing)
+            .ignoresSafeArea(.all)
+    }
+}
 
 struct MainWeatherView: View {
     
