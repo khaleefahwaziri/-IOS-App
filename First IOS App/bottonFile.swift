@@ -10,20 +10,20 @@ import SwiftUI
 
 struct ButtonFile: View {
     
-    var buttonText: String
-    var actionButton: () -> Void
+    var tittle: String
+    var textColor: Color
+    var backgroundColor: Color
     
     var body: some View {
-        Button{
-            print("Button Tapped")
-        }label: {
-            Text(buttonText)
-                .font(.system(size: 33, weight: .medium, design: .default))
-                .foregroundColor(.green)
-                .frame(width: 270, height: 50)
-                
+        Text(tittle)
+            .frame(width: 280, height: 50)
+            .background(backgroundColor.gradient)
+            .foregroundColor(textColor)
+            .font(.system(size: 20, weight: .bold,)
+            .cornerRadius(10)
+                  
         }
     }
-}
+
 
 

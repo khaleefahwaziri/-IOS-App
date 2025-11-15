@@ -13,7 +13,7 @@ struct ContentView: View {
     
     var body: some View {
         ZStack{
-            BackgroundView(isNightModeOn: $isNightModeOn)
+            BackgroundView(isNightModeOn: isNightModeOn)
             
             VStack{
                 CityNameView(cityName: "Coventry, UK")
@@ -43,7 +43,8 @@ struct ContentView: View {
                     Text("Change day mode")
                         .font(.system(size: 20, weight: .medium, design: .default))
                         .frame(width: 280, height: 50)
-                        .background(Color.white)
+                        
+                        .background(Color.white.gradient)
                         .cornerRadius(8)
                         
                 }
@@ -92,6 +93,7 @@ struct WeatherDayView: View {
             Image(systemName: imageName)
                 .symbolRenderingMode(.multicolor)
                 .resizable()
+//                .foregroundColor(.green)
 //                .foregroundStyle(.black, .white, .orange)
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 40, height: 40)
@@ -109,11 +111,15 @@ struct WeatherDayView: View {
 
 struct BackgroundView: View {
     
-    @Binding var isNightModeOn: Bool
+    var isNightModeOn: Bool
     
     var body: some View {
-        LinearGradient(gradient: Gradient(colors: [isNightModeOn ? .black : .blue, isNightModeOn ? .gray : .lightBlue ]), startPoint: .topLeading, endPoint: .bottomTrailing)
-            .ignoresSafeArea(.all)
+//        LinearGradient(gradient: Gradient(colors: [isNightModeOn ? .black : .blue, isNightModeOn ? .gray : .lightBlue ]), startPoint: .topLeading, endPoint: .bottomTrailing)
+//            .ignoresSafeArea(.all)
+        
+        ContainerRelativeShape()
+            .fill(isNightModeOn ? Color.black.gradient : Color.blue.gradient)
+            .edgesIgnoringSafeArea(.all)
     }
 }
 
