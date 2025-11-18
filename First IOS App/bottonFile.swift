@@ -19,11 +19,11 @@ struct ButtonFile: View {
             .frame(width: 280, height: 50)
             .background(backgroundColor.gradient)
             .foregroundColor(textColor)
-            .font(.system(size: 20, weight: .bold,)
+            .font(.system(size: 20, weight: .bold))
             .cornerRadius(10)
                   
-        }
     }
+}
 
 
 
