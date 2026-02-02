@@ -12,49 +12,24 @@ struct ContentView: View {
     @State private var isNightModeOn = false
     
     var body: some View {
-        ZStack{
+        ZStack {
             BackgroundView(isNightModeOn: isNightModeOn)
+        VStack {
             
-            VStack{
-                CityNameView(cityName: "Coventry, UK")
-                
-                
-                MainWeatherView(imageName: isNightModeOn ? "moon.stars.fill" : "cloud.sun.fill", temperature: 25)
-                
-                
-                
-                
-                HStack{
-                    WeatherDayView(daysOfWeek: "TUE", imageName: isNightModeOn ? "moon.stars.fill" : "cloud.sun.fill", temperature: 24)
-                    WeatherDayView(daysOfWeek: "WED", imageName: isNightModeOn ? "sun.snow.circle.fill" : "cloud.rain.fill", temperature: 4)
-                    WeatherDayView(daysOfWeek: "THU", imageName: isNightModeOn ? "cloud.bolt.fill" : "cloud.sleet", temperature: 13)
-                    WeatherDayView(daysOfWeek: "FRI", imageName: isNightModeOn ? "cloud.moon.bolt.circle.fill" : "snowflake", temperature: 2)
-                    WeatherDayView(daysOfWeek: "SAT", imageName: isNightModeOn ? "tornado" : "cloud.sun.bolt.circle.fill", temperature: 18)
-                    
-                    
-                    
-                }
-                
-                Spacer()
-                
-                Button {
-                    isNightModeOn.toggle()
-                }label: {
-                    Text("Change day mode")
-                        .font(.system(size: 20, weight: .medium, design: .default))
-                        .frame(width: 280, height: 50)
-                        
-                        .background(Color.white.gradient)
-                        .cornerRadius(8)
-                        
-                }
-                
-                Spacer()
-                
+            MainDayView(isNightModeOn: isNightModeOn, CityName: isNightModeOn ? "Coventry" : "Cairo", imageName: isNightModeOn ? "moon.zzz.fill" : "cloud.sun.fill", Temperature: 28)
+            HStack{
+                WeekDayView(weekDay: "MON", imageName: "cloud.sun.fill", Temperature: 28)
+                WeekDayView(weekDay: "TUE", imageName: "cloud.sun.fill", Temperature: 28)
+                WeekDayView(weekDay: "WED", imageName: "cloud.sun.fill", Temperature: 28)
+                WeekDayView(weekDay: "THUR", imageName: "cloud.sun.fill", Temperature: 28)
+                WeekDayView(weekDay: "FRI", imageName: "cloud.sun.fill", Temperature: 28)
             }
+            ButtonView(isNightModeOn: $isNightModeOn)
+            }
+            
+            
         }
     }
-    
     
 }
 
@@ -63,85 +38,92 @@ struct ContentView: View {
 }
 
 
-struct CityNameView: View {
-    
-    var cityName: String
-    
-    var body: some View {
-        Text(cityName)
-            .font(.system(size: 40, weight: .medium, design: .default))
-            .foregroundColor(.white)
-    }
-}
-
-
-
-
-
-struct WeatherDayView: View {
-    
-    var daysOfWeek: String
-    var imageName: String
-    var temperature: Int
-    
-    var body: some View {
-        VStack{
-            Text(daysOfWeek)
-                .font(.system(size: 20, weight: .medium, design: .default))
-                .foregroundColor(.white)
-            
-            Image(systemName: imageName)
-                .symbolRenderingMode(.multicolor)
-                .resizable()
-//                .foregroundColor(.green)
-//                .foregroundStyle(.black, .white, .orange)
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 40, height: 40)
-            
-            
-            
-            Text("\(temperature)°C")
-                .foregroundColor(.white)
-                .font(.system(size: 25, weight: .medium, design: .default))
-            
-        }
-    }
-}
-
-
 struct BackgroundView: View {
     
-    var isNightModeOn: Bool
+     var isNightModeOn: Bool
     
     var body: some View {
-//        LinearGradient(gradient: Gradient(colors: [isNightModeOn ? .black : .blue, isNightModeOn ? .gray : .lightBlue ]), startPoint: .topLeading, endPoint: .bottomTrailing)
-//            .ignoresSafeArea(.all)
-        
-        ContainerRelativeShape()
-            .fill(isNightModeOn ? Color.black.gradient : Color.blue.gradient)
-            .edgesIgnoringSafeArea(.all)
+        LinearGradient(
+            gradient: Gradient(colors: [ isNightModeOn ? .gray :  .blue, isNightModeOn ? .black: .white]),
+            startPoint: .top, endPoint: .bottom
+        )
+        .edgesIgnoringSafeArea(.all)
     }
 }
 
-struct MainWeatherView: View {
-    
+struct MainDayView: View {
+    var isNightModeOn: Bool
+    var CityName: String
     var imageName: String
-    var temperature: Int
+    var Temperature: Int
     
     var body: some View {
-        VStack(spacing: 8){
+        
+        VStack{
+            Text(CityName)
+                .font(.system(size: 45, weight: .heavy, design: .default))
+                .foregroundColor(.white)
+            
             Image(systemName: imageName)
                 .renderingMode(.original)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 180, height: 180)
             
-            
-            
-            Text("\(temperature)°C")
+            Text("\(Temperature)°C")
+                .font(.system(size: 40, weight: .medium, design: .default))
                 .foregroundColor(.white)
-                .font(.system(size: 70, weight: .medium, design: .default))
         }
         .padding(.bottom, 40)
+        
+    }
+}
+
+
+struct WeekDayView: View {
+    
+    var weekDay: String
+    var imageName: String
+    var Temperature: Int
+    
+    var body: some View {
+        VStack{
+            Text(weekDay)
+                .font(.system(size: 18, weight: .medium, design: .default))
+                .foregroundColor(.white)
+            
+            Image(systemName: imageName)
+                .symbolRenderingMode(.palette)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 40, height: 40)
+                .foregroundStyle(.mint, .orange, .green,)
+            
+            Text("\(Temperature)°C")
+                .font(Font.system(size: 20, weight: .medium, design: .default))
+                .foregroundStyle(Color.white)
+        }
+        .padding(.bottom, 10)
+        
+        
+    }
+}
+
+
+struct ButtonView: View {
+    
+    @Binding var isNightModeOn: Bool
+    
+    var body: some View {
+        Button{
+            isNightModeOn.toggle()
+        }label: {
+            Text("Toggle Night Mode")
+                .font(.system(size: 20, weight: .medium, design: .default) )
+                .frame(width: 270, height: 50)
+                .background(.white.gradient)
+                .cornerRadius(25)
+        }
+        .padding(.top, 20)
     }
 }

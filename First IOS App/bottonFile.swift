@@ -1,29 +1,27 @@
-//
-//  bottonFile.swift
-//  First IOS App
-//
-//  Created by Khalifa Waziri on 18/09/2025.
-//
+// weather button file
 
-//
+
 import SwiftUI
 
-struct ButtonFile: View {
+struct WeatherButton: View {
     
-    var tittle: String
+    var title: String
     var textColor: Color
     var backgroundColor: Color
     
     var body: some View {
-        Text(tittle)
-            .frame(width: 280, height: 50)
-            .background(backgroundColor.gradient)
+        Text(title)
+            .frame(width:280, height: 50)
+            .background(backgroundColor)
             .foregroundColor(textColor)
             .font(.system(size: 20, weight: .bold))
             .cornerRadius(10)
-                  
     }
 }
 
-
-
+struct WeatherButton_Previews: PreviewProvider {
+    static var previews: some View {
+        WeatherButton(title: "Test Title", textColor: .white,
+                      backgroundColor: .blue)
+    }
+}
