@@ -14,7 +14,7 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             BackgroundView(isNightModeOn: isNightModeOn)
-        VStack {
+            VStack {
             
             MainDayView(isNightModeOn: isNightModeOn, CityName: isNightModeOn ? "Coventry" : "Cairo", imageName: isNightModeOn ? "moon.zzz.fill" : "cloud.sun.fill", Temperature: 28)
             HStack{
@@ -127,3 +127,6 @@ struct ButtonView: View {
         .padding(.top, 20)
     }
 }
+
+
+// Finally done with this one 
